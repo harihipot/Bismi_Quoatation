@@ -12,18 +12,27 @@ import Colors from '../../assets/Colors';
 import {CommonStyles} from '../../assets/utils/CommonStyles';
 import Images from '../../assets/utils/Images';
 import SQLite from '../../assets/utils/SQLite';
+import {useIsFocused} from '@react-navigation/native';
 
 export default CustomersList = props => {
   const [customers, setCustomers] = useState([]);
+  const isFocused = useIsFocused();
 
   const getCustomers = () => {
     SQLite.queryAllCustomers(allData => {
       setCustomers(allData);
     });
   };
+
   useEffect(() => {
     getCustomers();
   }, []);
+
+  useEffect(() => {
+    if (isFocused) {
+      getCustomers();
+    }
+  }, [isFocused]);
 
   const onDeleteSuccess = () => {
     Alert.alert('', 'Customer deleted Successfully', [
@@ -65,7 +74,6 @@ export default CustomersList = props => {
                 onPress={() =>
                   props.navigation.navigate('AddCustomer', {
                     customer: item,
-                    refreshCallback: getCustomers,
                   })
                 }>
                 <View style={styles.itemContainerStyle}>
@@ -120,9 +128,7 @@ export default CustomersList = props => {
       <TouchableOpacity
         style={CommonStyles.addButtonStyle}
         onPress={() => {
-          props.navigation.navigate('AddCustomer', {
-            refreshCallback: getCustomers,
-          });
+          props.navigation.navigate('AddCustomer');
         }}>
         <Image source={Images.plus} style={CommonStyles.plusStyle} />
       </TouchableOpacity>

@@ -12,14 +12,23 @@ import Colors from '../../assets/Colors';
 import {CommonStyles} from '../../assets/utils/CommonStyles';
 import Images from '../../assets/utils/Images';
 import SQLite from '../../assets/utils/SQLite';
+import {useIsFocused} from '@react-navigation/native';
 
 export default ProductList = props => {
   const [productsData, setProductsData] = useState([]);
+  const isFocused = useIsFocused();
+
   const getProducts = () => {
     SQLite.queryAllProducts(allData => {
       setProductsData(allData);
     });
   };
+
+  useEffect(() => {
+    if (isFocused) {
+      getProducts();
+    }
+  }, [isFocused]);
 
   useEffect(() => {
     getProducts();
@@ -63,7 +72,6 @@ export default ProductList = props => {
                 onPress={() =>
                   props.navigation.navigate('AddProduct', {
                     product: item,
-                    refreshCallback: getProducts,
                   })
                 }>
                 <View style={styles.itemContainerStyle}>
@@ -85,16 +93,16 @@ export default ProductList = props => {
                       </Text>
                     )}
                   </View>
-                  <Text style={styles.priceStyle}> &#8377; {item.price}</Text>
-                  <TouchableOpacity
-                    onPress={() => deleteProduct(item)}
-                    style={{position: 'absolute', right: 0, top:50, bottom: 20}}>
-                    <Image
-                      style={CommonStyles.imageStyle}
-                      resizeMode="contain"
-                      source={Images.delete}
-                    />
-                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.priceStyle}> &#8377; {item.price}</Text>
+                    <TouchableOpacity style={{marginTop:16}} onPress={() => deleteProduct(item)}>
+                      <Image
+                        style={CommonStyles.imageStyle}
+                        resizeMode="contain"
+                        source={Images.delete}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </TouchableOpacity>
             );
@@ -104,9 +112,7 @@ export default ProductList = props => {
       <TouchableOpacity
         style={CommonStyles.addButtonStyle}
         onPress={() => {
-          props.navigation.navigate('AddProduct', {
-            refreshCallback: getProducts,
-          });
+          props.navigation.navigate('AddProduct');
         }}>
         <Image source={Images.plus} style={CommonStyles.plusStyle} />
       </TouchableOpacity>

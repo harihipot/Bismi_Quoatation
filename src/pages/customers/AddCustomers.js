@@ -74,9 +74,6 @@ export default AddCustomers = ({route, navigation}) => {
             setPinCode('');
             setPhoneNumber('');
             setGstIn('');
-            if (route?.params?.refreshCallback) {
-              route?.params?.refreshCallback();
-            }
           },
         },
       ],
@@ -147,6 +144,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setName(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
           errorMessage={isError && name === '' ? 'Enter the name' : null}
         />
@@ -156,6 +154,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setAddressOne(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
           errorMessage={
             isError && addressOne === '' ? 'Enter the address one' : null
@@ -167,6 +166,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setAddressTwo(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
           errorMessage={
             isError && addressTwo === '' ? 'Enter the address two' : null
@@ -178,6 +178,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setCity(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
           errorMessage={isError && city === '' ? 'Enter the city' : null}
         />
@@ -187,6 +188,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setStateValue(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
           errorMessage={isError && stateValue === '' ? 'Enter the state' : null}
         />
@@ -198,6 +200,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setPinCode(text);
           }}
+          returnKeyTypeProp='next'
           errorMessage={isError && pinCode === '' ? 'Enter the pincode' : null}
         />
         <TextInputComponent
@@ -208,6 +211,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setPhoneNumber(text);
           }}
+          returnKeyTypeProp='next'
           errorMessage={
             isError && (phoneNumber === '' || phoneNumber.length < 10)
               ? 'Enter the phone number'
@@ -222,6 +226,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setGstIn(text);
           }}
+          returnKeyTypeProp='done'
           errorMessage={isError && gstIn === '' ? 'Enter the GST number' : null}
           autoCapitalizeProp={'characters'}
         />

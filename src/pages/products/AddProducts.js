@@ -68,9 +68,6 @@ export default AddProducts = ({route, navigation}) => {
           text: 'ok',
           onPress: () => {
             navigation.pop();
-            if (route?.params?.refreshCallback) {
-              route?.params?.refreshCallback();
-            }
           },
         },
       ],
@@ -130,6 +127,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setName(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
           errorMessage={isError && name === '' ? 'Enter the name' : null}
         />
@@ -140,6 +138,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setPrice(text);
           }}
+          returnKeyTypeProp='next'
           keyboardTypeProp="numeric"
           autoCapitalizeProp={'words'}
           errorMessage={isError && price === '' ? 'Enter the price' : null}
@@ -151,6 +150,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setSizeHWL(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
         />
 
@@ -160,6 +160,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setSizeIn(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
         />
 
@@ -169,6 +170,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setWeight(text);
           }}
+          returnKeyTypeProp='next'
           autoCapitalizeProp={'words'}
         />
 
@@ -178,6 +180,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setNoc(text);
           }}
+          returnKeyTypeProp='done'
           autoCapitalizeProp={'words'}
         />
       </ScrollView>

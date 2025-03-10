@@ -12,12 +12,13 @@ export default TextInputComponent = props => {
     errorMessage,
     maxLengthProp,
     autoCapitalizeProp,
-    isEditable
+    isEditable,
+    returnKeyTypeProp=''
   } = props;
   return (
     <View style={styles.containerStyle}>
       <TextInput
-      editable={isEditable}
+        editable={isEditable}
         placeholder={placeholderText}
         placeholderTextColor="#8e8e8e"
         keyboardType={keyboardTypeProp}
@@ -27,6 +28,7 @@ export default TextInputComponent = props => {
         onChangeText={text => {
           onChange(text);
         }}
+        returnKeyType={returnKeyTypeProp}
         autoCapitalize={autoCapitalizeProp}
       />
       {errorMessage && errorMessage !== '' && (
