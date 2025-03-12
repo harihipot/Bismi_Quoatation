@@ -35,7 +35,7 @@ export default ProductList = props => {
   }, []);
 
   const onDeleteSuccess = () => {
-    Alert.alert('', 'Product deleted Successfully', [
+    Alert.alert('Success', 'Product deleted Successfully', [
       {
         text: 'ok',
         onPress: () => {
@@ -95,7 +95,9 @@ export default ProductList = props => {
                   </View>
                   <View>
                     <Text style={styles.priceStyle}> &#8377; {item.price}</Text>
-                    <TouchableOpacity style={{marginTop:16}} onPress={() => deleteProduct(item)}>
+                    <TouchableOpacity
+                      style={{marginTop: 16}}
+                      onPress={() => deleteProduct(item)}>
                       <Image
                         style={CommonStyles.imageStyle}
                         resizeMode="contain"

@@ -35,7 +35,7 @@ export default CustomersList = props => {
   }, [isFocused]);
 
   const onDeleteSuccess = () => {
-    Alert.alert('', 'Customer deleted Successfully', [
+    Alert.alert('Success', 'Customer data deleted Successfully', [
       {
         text: 'ok',
         onPress: () => {

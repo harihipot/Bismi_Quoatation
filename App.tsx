@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import RootNavigator from './src/navigation/RootNavigator';
 import SQLite from './src/assets/utils/SQLite';
 import {StatusBar} from 'react-native';
 import Colors from './src/assets/Colors';
+import BottomNavigator from './src/navigation/BottomNavigator';
 
 const App = () => {
   useEffect(() => {
@@ -18,7 +18,7 @@ const App = () => {
     <>
       <StatusBar backgroundColor={Colors.greenColor} translucent={false} />
       <NavigationContainer>
-        <RootNavigator />
+        <BottomNavigator />
       </NavigationContainer>
     </>
   );

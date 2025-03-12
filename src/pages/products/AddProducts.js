@@ -59,7 +59,7 @@ export default AddProducts = ({route, navigation}) => {
     setWeight('');
     setNoc('');
     Alert.alert(
-      '',
+      'Success',
       existingProduct
         ? 'Product Updated Successfully'
         : 'Product Add Successfully',
@@ -76,7 +76,7 @@ export default AddProducts = ({route, navigation}) => {
 
   const onAddError = error => {
     Alert.alert(
-      '',
+      'Error',
       existingProduct
         ? 'Failed to update product, please Try again'
         : 'Failed to create product, please Try again',
@@ -127,7 +127,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setName(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
           errorMessage={isError && name === '' ? 'Enter the name' : null}
         />
@@ -138,7 +138,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setPrice(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           keyboardTypeProp="numeric"
           autoCapitalizeProp={'words'}
           errorMessage={isError && price === '' ? 'Enter the price' : null}
@@ -150,7 +150,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setSizeHWL(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
         />
 
@@ -160,7 +160,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setSizeIn(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
         />
 
@@ -170,7 +170,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setWeight(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
         />
 
@@ -180,7 +180,7 @@ export default AddProducts = ({route, navigation}) => {
           onChange={text => {
             setNoc(text);
           }}
-          returnKeyTypeProp='done'
+          returnKeyTypeProp="done"
           autoCapitalizeProp={'words'}
         />
       </ScrollView>

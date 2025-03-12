@@ -57,7 +57,7 @@ export default AddCustomers = ({route, navigation}) => {
 
   const onAddSuccess = () => {
     Alert.alert(
-      '',
+      'Success',
       existingCustomer
         ? 'Customer Updated Successfully'
         : 'Customer Add Successfully',
@@ -82,10 +82,10 @@ export default AddCustomers = ({route, navigation}) => {
 
   const onAddError = error => {
     Alert.alert(
-      '',
+      'Error',
       existingCustomer
         ? 'Failed to update Customer, please Try again'
-        : 'Failed to create Customer, please Try again',
+        : 'Failed to add Customer, please Try again',
     );
   };
 
@@ -144,7 +144,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setName(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
           errorMessage={isError && name === '' ? 'Enter the name' : null}
         />
@@ -154,7 +154,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setAddressOne(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
           errorMessage={
             isError && addressOne === '' ? 'Enter the address one' : null
@@ -166,7 +166,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setAddressTwo(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
           errorMessage={
             isError && addressTwo === '' ? 'Enter the address two' : null
@@ -178,7 +178,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setCity(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
           errorMessage={isError && city === '' ? 'Enter the city' : null}
         />
@@ -188,7 +188,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setStateValue(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           autoCapitalizeProp={'words'}
           errorMessage={isError && stateValue === '' ? 'Enter the state' : null}
         />
@@ -200,7 +200,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setPinCode(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           errorMessage={isError && pinCode === '' ? 'Enter the pincode' : null}
         />
         <TextInputComponent
@@ -211,7 +211,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setPhoneNumber(text);
           }}
-          returnKeyTypeProp='next'
+          returnKeyTypeProp="next"
           errorMessage={
             isError && (phoneNumber === '' || phoneNumber.length < 10)
               ? 'Enter the phone number'
@@ -226,7 +226,7 @@ export default AddCustomers = ({route, navigation}) => {
           onChange={text => {
             setGstIn(text);
           }}
-          returnKeyTypeProp='done'
+          returnKeyTypeProp="done"
           errorMessage={isError && gstIn === '' ? 'Enter the GST number' : null}
           autoCapitalizeProp={'characters'}
         />
@@ -252,5 +252,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     paddingBottom: 50,
   },
-  contentStyle: {flexWrap: 1},
+  contentStyle: {flexWrap: 1, paddingBottom: 80},
 });

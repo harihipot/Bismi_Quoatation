@@ -1,14 +1,13 @@
 import {calculatePrices, displayAmountFormat} from './CommonUtils';
 import moment from 'moment';
 import {Image} from 'react-native';
+import {base64Image} from '../data/AppData';
 
 export const constructHTML = (company, customer, selectedProducts) => {
   const toalObj = calculatePrices(selectedProducts);
   let today = moment().format('DD-MM-YYYY');
-
-  const signImage = `<img src="${
-    Image.resolveAssetSource(require('../images/quoateSign.png')).uri
-  }" width='150' height='60' />`;
+  const signImage = `<img src="${base64Image}" width='200' height='70' />`;
+  
   const companyDetails = `<p> <strong>${company.name}</strong><br/>
   ${
     company.addressOne +
@@ -21,9 +20,9 @@ export const constructHTML = (company, customer, selectedProducts) => {
     ',' +
     company.state
   }<br/>
-  GSTIN:${company.gstIn}<br/>
-  Phone:${company.phoneOne + ', ' + company.phoneTwo}<br/>
-  E-mail:${company.email}<br/>
+  GSTIN: ${company.gstIn}<br/>
+  Phone: ${company.phoneOne + ', ' + company.phoneTwo}<br/>
+  E-mail: ${company.email}<br/>
   </p>`;
 
   const bankDetails = `<p>
@@ -46,7 +45,7 @@ export const constructHTML = (company, customer, selectedProducts) => {
       '-' +
       customer.pincode
     }<br/>
-    ${customer.phone} <br/>  ${customer.gstNo}</p>`;
+    Phone: ${customer.phone} <br/> GSTIN: ${customer.gstNo}</p>`;
 
   let products = '';
   selectedProducts.forEach((item, index) => {
@@ -75,7 +74,7 @@ export const constructHTML = (company, customer, selectedProducts) => {
   });
 
   const dataSpace =
-    selectedProducts.length > 2 && selectedProducts.length < 5
+    selectedProducts.length > 4 && selectedProducts.length <= 7
       ? 'always'
       : 'avoid';
 
@@ -169,7 +168,7 @@ export const constructHTML = (company, customer, selectedProducts) => {
         text-align: center;
       }
       .spacer { 
-        height: 100px; /* Adjust height as needed */ 
+        height: 200px; /* Adjust height as needed */ 
       }
     </style>
   </head>

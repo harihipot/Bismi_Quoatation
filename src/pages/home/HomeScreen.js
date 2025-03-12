@@ -166,7 +166,7 @@ export default HomeScreen = () => {
         if (!file.filePath) {
           return;
         } else {
-          Alert.alert('Quotation created', '', [
+          Alert.alert('Success', 'Quotation created Successfully', [
             {
               text: 'ok',
               onPress: () => {
@@ -177,7 +177,7 @@ export default HomeScreen = () => {
           ]);
         }
       } catch (error) {
-        Alert.alert('', 'Failed to create quotation, please Try again');
+        Alert.alert('Error', 'Failed to create quotation, please Try again');
       }
     }
   };
@@ -379,12 +379,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'absolute',
-    bottom: 20,
-    left: 10,
+    bottom: 10,
   },
   createButtonStyle: {
-    width: 180,
+    width: '53%',
     alignItems: 'center',
     backgroundColor: Colors.greenColor,
     paddingVertical: 10,
@@ -392,7 +390,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   restButtonStyle: {
-    width: 180,
+    width: '40%',
     alignItems: 'center',
     backgroundColor: '#0000FF',
     paddingVertical: 10,
@@ -401,7 +399,7 @@ const styles = StyleSheet.create({
   },
   createTextStyle: {
     color: Colors.white,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '600',
   },
   dropdown: {

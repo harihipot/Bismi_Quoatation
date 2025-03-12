@@ -5,13 +5,13 @@ import ProductList from '../pages/products/ProductList';
 import ProfilePage from '../pages/profile/ProfilePage';
 import Images from '../assets/utils/Images';
 import {Image, View} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import AddCustomers from '../pages/customers/AddCustomers';
 import AddProducts from '../pages/products/AddProducts';
 import {CommonStyles} from '../assets/utils/CommonStyles';
 import Colors from '../assets/Colors';
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export default BottomNavigator = () => {
   const options = (label, headerTitle, activeImage, passiveImage, route) => {
@@ -47,9 +47,9 @@ export default BottomNavigator = () => {
 
   const CustomerStack = () => {
     return (
-      <Stack.Navigator initialRouteName="Customer">
+      <Stack.Navigator initialRouteName="CustomerList">
         <Stack.Screen
-          name="Customer"
+          name="CustomerList"
           component={CustomersList}
           options={{headerShown: false}}
         />
@@ -64,9 +64,9 @@ export default BottomNavigator = () => {
 
   const ProductStack = () => {
     return (
-      <Stack.Navigator initialRouteName="Product">
+      <Stack.Navigator initialRouteName="ProductList">
         <Stack.Screen
-          name="Product"
+          name="ProductList"
           component={ProductList}
           options={{headerShown: false}}
         />
@@ -81,6 +81,8 @@ export default BottomNavigator = () => {
 
   return (
     <Tab.Navigator
+      detachInactiveScreens={false}
+      backBehavior='initialRoute'
       screenOptions={{
         tabBarStyle: CommonStyles.tabBarContainerStyle,
         unmountOnBlur: true,

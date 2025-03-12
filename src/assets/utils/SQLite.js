@@ -109,7 +109,9 @@ export default class SQLite {
     const keys = Object.keys(fields);
     keys.forEach(key => {
       const value = fields[key];
-      sqlStr = `${sqlStr + key} ${value},`;
+      sqlStr = `${sqlStr + key} ${value} ${
+        key === 'id' ? 'PRIMARY KEY AUTOINCREMENT' : ''
+      },`;
     });
     sqlStr = sqlStr.substring(0, sqlStr.lastIndexOf(','));
     sqlStr += ');';
@@ -202,6 +204,7 @@ export default class SQLite {
 
   static createCutomerTable(success, error) {
     const tableStructure = {
+      id: 'INTEGER',
       name: 'VARCHAR',
       addressOne: 'VARCHAR',
       addressTwo: 'VARCHAR',
@@ -302,6 +305,7 @@ export default class SQLite {
 
   static createProductTable(success, error) {
     const tableStructure = {
+      id: 'INTEGER',
       name: 'VARCHAR',
       price: 'VARCHAR',
       sizeInMM: 'VARCHAR',
