@@ -94,22 +94,27 @@ export default CustomersList = props => {
                         item.pincode}
                     </Text>
                   </View>
-                  <View style={CommonStyles.containerRowStyle}>
-                    <Image
-                      style={CommonStyles.imageStyle}
-                      resizeMode="contain"
-                      source={Images.phone}
-                    />
-                    <Text style={styles.phoneStyle}>{item.phone}</Text>
-                  </View>
-                  <View style={CommonStyles.containerRowStyle}>
-                    <Image
-                      style={CommonStyles.imageStyle}
-                      resizeMode="contain"
-                      source={Images.gst}
-                    />
-                    <Text style={styles.phoneStyle}>{item.gstNo}</Text>
-                  </View>
+                  {(item.phone || item.phone !== '') && (
+                    <View style={CommonStyles.containerRowStyle}>
+                      <Image
+                        style={CommonStyles.imageStyle}
+                        resizeMode="contain"
+                        source={Images.phone}
+                      />
+                      <Text style={styles.phoneStyle}>{item.phone}</Text>
+                    </View>
+                  )}
+                  {(item.gstNo || item.gstNo !== '') && (
+                    <View style={CommonStyles.containerRowStyle}>
+                      <Image
+                        style={CommonStyles.imageStyle}
+                        resizeMode="contain"
+                        source={Images.gst}
+                      />
+                      <Text style={styles.phoneStyle}>{item.gstNo}</Text>
+                    </View>
+                  )}
+
                   <TouchableOpacity
                     onPress={() => deleteCustomer(item)}
                     style={{position: 'absolute', right: 0, top: 20}}>

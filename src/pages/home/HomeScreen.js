@@ -222,8 +222,8 @@ export default HomeScreen = () => {
                     '-' +
                     item.pincode}
                 </Text>
-                <Text>{item.phone}</Text>
-                <Text>{item.gstNo}</Text>
+                {(item.phone || item.phone !== '') && <Text>{item.phone}</Text>}
+                {(item.gstNo || item.gstNo !== '') && <Text>{item.gstNo}</Text>}
               </View>
             );
           }}

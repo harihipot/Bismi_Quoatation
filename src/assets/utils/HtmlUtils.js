@@ -7,7 +7,7 @@ export const constructHTML = (company, customer, selectedProducts) => {
   const toalObj = calculatePrices(selectedProducts);
   let today = moment().format('DD-MM-YYYY');
   const signImage = `<img src="${base64Image}" width='200' height='70' />`;
-  
+
   const companyDetails = `<p> <strong>${company.name}</strong><br/>
   ${
     company.addressOne +
@@ -33,6 +33,15 @@ export const constructHTML = (company, customer, selectedProducts) => {
   Branch IFSC NO: ${company.ifscode}
   </p>`;
 
+  const customerPhone =
+    customer.phone || customer.phone !== ''
+      ? `<br/> Phone: ${customer.phone}`
+      : '';
+  const customerGst =
+    customer.gstNo || customer.gstNo !== ''
+      ? `<br/> GSTIN: ${customer.gstNo}</p>`
+      : '';
+
   const cusomerDetails = `<p class="left-align">
   <strong>To:</strong><br />
   <b>${customer.name}</b><br/>
@@ -45,7 +54,8 @@ export const constructHTML = (company, customer, selectedProducts) => {
       '-' +
       customer.pincode
     }<br/>
-    Phone: ${customer.phone} <br/> GSTIN: ${customer.gstNo}</p>`;
+    ${customerPhone}
+    ${customerGst}`;
 
   let products = '';
   selectedProducts.forEach((item, index) => {

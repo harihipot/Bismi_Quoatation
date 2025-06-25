@@ -96,9 +96,7 @@ export default AddCustomers = ({route, navigation}) => {
       (addressTwo === '') |
       (city === '') |
       (stateValue === '') |
-      (pinCode === '') |
-      (phoneNumber === '' || phoneNumber.length < 10) |
-      (gstIn === '' || gstIn.length < 15)
+      (pinCode === '')
     ) {
       setIsError(true);
     } else {
@@ -204,7 +202,7 @@ export default AddCustomers = ({route, navigation}) => {
           errorMessage={isError && pinCode === '' ? 'Enter the pincode' : null}
         />
         <TextInputComponent
-          placeholderText="Phone number *"
+          placeholderText="Phone number (optional)"
           textValue={phoneNumber}
           keyboardTypeProp="number-pad"
           maxLengthProp={10}
@@ -219,8 +217,7 @@ export default AddCustomers = ({route, navigation}) => {
           }
         />
         <TextInputComponent
-          isEditable={!existingCustomer}
-          placeholderText="GST IN *"
+          placeholderText="GST IN (optional)"
           textValue={gstIn}
           maxLengthProp={15}
           onChange={text => {
