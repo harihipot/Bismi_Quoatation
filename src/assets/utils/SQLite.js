@@ -405,14 +405,9 @@ export default class SQLite {
   static deleteItemInTable(item, isCustomer, success, error) {
     let query = '';
     if (isCustomer) {
-      query = `DELETE FROM ${SQLite.cutomerTableName} WHERE gstNo='${item.gstNo}'`;
+      query = `DELETE FROM ${SQLite.cutomerTableName} WHERE id='${item.id}'`;
     } else {
-      query = `DELETE FROM ${SQLite.productTableName} WHERE name='${item.name}' 
-      AND price='${item.price}' AND 
-      sizeInMM='${item.sizeInMM}' AND 
-      sizeInInches='${item.sizeInInches}' AND 
-      weight='${item.weight}' AND 
-      noc='${item.noc}'`;
+      query = `DELETE FROM ${SQLite.productTableName} WHERE id='${item.id}'`;
     }
     SQLite.open(
       db => {
@@ -452,19 +447,14 @@ export default class SQLite {
       state = '${newData.state}',
       phone = '${newData.phone}', 
       gstNo = '${newData.gstNo}'
-      WHERE gstNo='${newData.gstNo}'`;
+      WHERE id='${existingData.id}'`;
     } else {
       query = `UPDATE ${SQLite.productTableName} SET name = '${newData.name}', 
       price = '${newData.price}',
       sizeInMM = '${newData.sizeInMM}', 
       sizeInInches = '${newData.sizeInInches}', 
       weight = '${newData.weight}', 
-      noc = '${newData.noc}' WHERE name='${existingData.name}' 
-      AND price='${existingData.price}' AND 
-      sizeInMM='${existingData.sizeInMM}' AND 
-      sizeInInches='${existingData.sizeInInches}' AND 
-      weight='${existingData.weight}' AND 
-      noc='${existingData.noc}'`;
+      noc = '${newData.noc}' WHERE id='${existingData.id}'`;
     }
     SQLite.open(
       db => {

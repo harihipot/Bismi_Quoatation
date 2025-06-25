@@ -53,7 +53,7 @@ export const constructHTML = (company, customer, selectedProducts) => {
       customer.city +
       '-' +
       customer.pincode
-    }<br/>
+    }
     ${customerPhone}
     ${customerGst}`;
 
